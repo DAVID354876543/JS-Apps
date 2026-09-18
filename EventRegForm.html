@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      background: aliceblue;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: navy;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px;
+      border: 2px solid navy;
+      border-radius: 6px;
+      width: 220px;
+    }
+
+    button {
+      background: navy;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    #timer {
+      color: grey;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Event Registration</h1>
+  <p>Enter your details to register for our event!</p>
+
+  <input type="text" id="name" placeholder="Your name" required><br>
+  <p id="msg-name"></p>
+
+  <input type="email" id="email" placeholder="Your email" required><br>
+  <p id="msg-email"></p>
+
+  <input type="text" id="event" placeholder="Event name" required><br>
+  <p id="msg-event"></p>
+
+  <button onclick="checkForm()">Register Now!</button>
+  <p id="result"></p>
+  <p id="timer"></p>
+
+  <script>
+
+    var seconds = 0;
+    setInterval(function() {
+      seconds = seconds + 1;
+      document.getElementById("timer").textContent =
+        "You have been here for " + seconds + " seconds!";
+    }, 1000);
+
+    function checkForm() {
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var event = document.getElementById("event").value;
+      var ok = true;
+
+      if (name == "") {
+        document.getElementById("msg-name").textContent =
+          "Please enter your name!";
+        document.getElementById("msg-name").style.color = "red";
+        ok = false;
+      } else {
+        document.getElementById("msg-name").textContent = "Great name!";
+        document.getElementById("msg-name").style.color = "green";
+      }
+
+      if (email == "") {
+        document.getElementById("msg-email").textContent =
+          "Please enter your email!";
+        document.getElementById("msg-email").style.color = "red";
+        ok = false;
+      } else {
+        document.getElementById("msg-email").textContent = "Email saved!";
+        document.getElementById("msg-email").style.color = "green";
+      }
+
+      if (event == "") {
+        document.getElementById("msg-event").textContent =
+          "Please enter an event name!";
+        document.getElementById("msg-event").style.color = "red";
+        ok = false;
+      } else {
+        document.getElementById("msg-event").textContent = "Event selected!";
+        document.getElementById("msg-event").style.color = "green";
+      }
+
+      if (ok == true) {
+        document.getElementById("result").textContent =
+          "Registration successful, " + name + "! You are registered for " + event + ".";
+        document.getElementById("result").style.color = "green";
+      }
+    }
+
+  </script>
+</body>
+</html>
